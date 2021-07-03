@@ -1,0 +1,56 @@
+@url =http://localhost:3000/api
+@token = {{login.response.body.token}}
+@path = /typeOrder
+@bearer = Bearer
+
+# @name login
+POST {{url}}/login HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+
+{
+    "email": "malik2@gmail.com",
+    "password": "12345678"
+}
+
+### 
+
+# @name getTypeOrder
+GET {{url}}{{path}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name createTypeOrder
+POST {{url}}{{path}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "name {{$guid}}"
+}
+
+###
+
+# @name updateTypeOrder
+PUT {{url}}{{path}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: {{bearer}} {{token}}
+
+{
+    "id": 1,
+    "name": "update name {{$guid}}"
+}
+
+### 
+
+# @name deleteTypeOrder
+DELETE {{url}}{{path}}/1 HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: {{bearer}} {{token}}

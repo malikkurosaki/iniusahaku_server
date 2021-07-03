@@ -1,0 +1,59 @@
+@url =http://localhost:3000/api
+@company=/company
+@token = {{login.response.body.message}}
+
+###
+
+# @name login
+POST {{url}}/login HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "malik2@gmail.com",
+    "password": "12345678"
+}
+
+
+###
+
+# @name getCompany
+GET {{url}}{{company}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name createCompany
+POST {{url}}{{company}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "sama jaya",
+    "address": "denpasar",
+    "phone": "081"
+}
+
+###
+
+# @name updateCompany
+PUT {{url}}{{company}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "sama jaya jayanya negara kita",
+    "address": "denpasar",
+    "phone": "081"
+}
+
+###
+
+# @name deleteCompany
+DELETE {{url}}{{company}} HTTP/1.1
+Authorization: Bearer {{token}}
+

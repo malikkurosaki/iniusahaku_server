@@ -1,0 +1,62 @@
+@url =http://localhost:3000/api
+@path =/category
+@token = {{login.response.body.message}}
+
+###
+
+# @name login
+POST {{url}}/login HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "malik2@gmail.com",
+    "password": "12345678"
+}
+
+###
+
+# @name getOutlet
+GET {{url}}/outlet HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name creaateOutlet
+POST {{url}}/outlet HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "outlet {{$guid}}",
+    "address": "address {{$guid}}",
+    "phone": "081 {{$guid}}",
+    "phone2": "081 {{$guid}}"
+}
+
+###
+
+# @name updateOutlet
+PUT {{url}}/outlet HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": 3,
+    "name": "outlet wakowakoewkwkwow {{$guid}}",
+    "address": "address update {{$guid}}",
+    "phone": "081 {{$guid}}",
+    "phone2": "081 {{$guid}}"
+}
+
+###
+
+# @name deleteOutlet
+DELETE {{url}}/outlet/2 HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
